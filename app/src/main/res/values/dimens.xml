@@ -1,0 +1,113 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <!--Font-->
+    <dimen name="material_text_button">14sp</dimen>
+    <dimen name="material_text_menu">14sp</dimen>
+    <dimen name="material_text_caption">12sp</dimen>
+    <dimen name="material_text_small">11sp</dimen>
+    <dimen name="material_text_small_1">10sp</dimen>
+    <dimen name="material_text_small_2">9sp</dimen>
+    <dimen name="material_text_bodyM">14sp</dimen>
+    <dimen name="material_text_bodyR">13sp</dimen>
+    <dimen name="material_text_subhead">16sp</dimen>
+    <dimen name="material_text_subtitle">18sp</dimen>
+    <dimen name="material_text_title">20sp</dimen>
+    <dimen name="material_text_headline">24sp</dimen>
+    <dimen name="material_text_display1">34sp</dimen>
+    <dimen name="material_text_display2">45sp</dimen>
+    <dimen name="material_text_display3">56sp</dimen>
+    <dimen name="material_text_display4">112sp</dimen>
+
+    <!-- Buttons-->
+    <dimen name="button_corner_radius">25dp</dimen>
+    <dimen name="button_corner_radius_2">30dp</dimen>
+    <dimen name="button_width">150dp</dimen>
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="button_margin_bottom">5dp</dimen>
+    <dimen name="button_text_size">16sp</dimen>
+    <dimen name="button_border_width">1dp</dimen>
+    <dimen name="button_width_small">140dp</dimen>
+    <dimen name="button_height_small">30dp</dimen>
+    <dimen name="button_height_small_1">30dp</dimen>
+    <dimen name="button_width_medium">125dp</dimen>
+    <dimen name="button_width_medium_1">136dp</dimen>
+    <dimen name="button_width_large_1">252dp</dimen>
+    <dimen name="button_height_large">33dp</dimen>
+    <dimen name="button_width_large_2">365dp</dimen>
+    <dimen name="button_circular_width">25dp</dimen>
+    <dimen name="button_circular_height">25dp</dimen>
+    <dimen name="button_circular_width_1">65dp</dimen>
+    <dimen name="button_circular_height_1">65dp</dimen>
+    <dimen name="button_circular">60dp</dimen>
+    <dimen name="button_circular_width_3">78dp</dimen>
+    <dimen name="button_circular_height_3">78dp</dimen>
+
+
+
+
+    <!--Editext-->
+    <dimen name="editext_field_width">300dp</dimen>
+    <dimen name="editext_field_height">40dp</dimen>
+    <dimen name="editext_field_height_1">55dp</dimen>
+    <dimen name="editext_field_width_1">310dp</dimen>
+    <dimen name="editext_field_width_2">200dp</dimen>
+    <dimen name="editext_field_border">1dp</dimen>
+    <dimen name="editext_field_corner_radius">200dp</dimen>
+    <dimen name="editext_field_corner_radius_2">150dp</dimen>
+    <dimen name="editext_field_corner_radius_3">20dp</dimen>
+
+    <!--Padding -->
+    <dimen name="xxmicro_padding">0.5dp</dimen>
+    <dimen name="xmicro_padding">1dp</dimen>
+    <dimen name="micro_padding">2dp</dimen>
+    <dimen name="small_padding">4dp</dimen>
+    <dimen name="xsmall_padding">5dp</dimen>
+    <dimen name="xxsmall_padding">6dp</dimen>
+    <dimen name="normal_padding">8dp</dimen>
+    <dimen name="xnormal_padding">10dp</dimen>
+    <dimen name="large_padding">12dp</dimen>
+    <dimen name="xlarge_padding">16dp</dimen>
+    <dimen name="xxlarge_padding">20dp</dimen>
+    <dimen name="xxxlarge_padding">24dp</dimen>
+    <dimen name="big_padding">25dp</dimen>
+    <dimen name="big_padding_28dp">28dp</dimen>
+    <dimen name="xmedium_padding">30dp</dimen>
+    <dimen name="xxmedium_padding">33dp</dimen>
+    <dimen name="medium_padding">36dp</dimen>
+    <dimen name="xbig_padding">40dp</dimen>
+    <dimen name="xxbig_padding">45dp</dimen>
+    <dimen name="xxxbig_padding">50dp</dimen>
+    <dimen name="extra_big_padding">73dp</dimen>
+    <dimen name="maxi_paddingStart">80dp</dimen>
+    <dimen name="maxi_paddingEnd">80dp</dimen>
+
+
+    <!--Util-->
+    <dimen name="avatar_size">90dp</dimen>
+    <dimen name="avatar_size_1">95dp</dimen>
+    <dimen name="avatar_menu">64dp</dimen>
+    <dimen name="avatar_list">65dp</dimen>
+    <dimen name="avatar_list_2">50dp</dimen>
+    <dimen name="logo_store">60dp</dimen>
+    <dimen name="logo_store_1">70dp</dimen>
+    <dimen name="logo_store_2">65dp</dimen>
+    <dimen name="logo_store_73dp">73dp</dimen>
+    <dimen name="nav_header_height">156dp</dimen>
+    <dimen name="header_height">192dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="width_banner">385dp</dimen>
+    <dimen name="height_banner">115dp</dimen>
+    <dimen name="height_divider_banner">75dp</dimen>
+    <dimen name="corner_radius">3dp</dimen>
+    <dimen name="card_width">180dp</dimen>
+    <dimen name="card_heigth">100dp</dimen>
+    <dimen name="detail_backdrop_height">150dp</dimen>
+
+
+    <!--Icons-->
+    <dimen name="icon_small">18dp</dimen>
+    <dimen name="icon_normal">24dp</dimen>
+    <dimen name="icon_xnormal">36dp</dimen>
+
+</resources>

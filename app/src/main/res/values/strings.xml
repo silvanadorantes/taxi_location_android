@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">taxi_location_android</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="undefined" translatable="false">Undefined</string>
+    <string name="connectivity_exception">No connectivity exception</string>
+    <string name="url_not_exist">url requested does not exist</string>
+    <string name="taxi_not_exist">Taxi not exist</string>
+    <string name="event_not_exist">Event not exist</string>
+    <string name="network_error">Oops, something happened, try again.</string>
+    <string name="no_internet">You must have an internet connection</string>
+    <string name="try_again">An error has occurred, try again.</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate metus neque, in lobortis mauris luctus sed. Donec feugiat odio vitae lacus interdum rutrum. Aenean vehicula mauris fermentum placerat porta. Phasellus viverra dui non enim aliquam feugiat. Nullam imperdiet nulla non felis euismod, eget venenatis dui feugiat. In lobortis venenatis orci in ullamcorper. Donec varius fermentum nibh nec viverra.</string>
+    <string name="lorem_ipsum_small">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="lorem_ipsum_small_1">Lorem ipsum dolor sit amet.</string>
+    <string name="error" translatable="false">Error</string>
+
+</resources>
