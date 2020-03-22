@@ -108,6 +108,7 @@
     <!--Icons-->
     <dimen name="icon_small">18dp</dimen>
     <dimen name="icon_normal">24dp</dimen>
-    <dimen name="icon_xnormal">36dp</dimen>
+    <dimen name="icon_xnormal">30dp</dimen>
+    <dimen name="icon_xxnormal">36dp</dimen>
 
 </resources>
