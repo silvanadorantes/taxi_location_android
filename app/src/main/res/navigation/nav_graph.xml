@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/ListPlacemarksFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.silvanadorantescode.taxi_location_android.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/ListPlacemarksFragment"
+        android:name="com.example.silvanadorantescode.taxi_location_android.presentation.ui.ListPlacemarksFragment"
+        android:label="@string/list_placemarks_fragment_label"
+        tools:layout="@layout/fragment_list_placemarks">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_ListPlacemarksFragment_to_MapPlacemarksFragment"
+            app:destination="@id/MapPlacemarksFragment"/>
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.silvanadorantescode.taxi_location_android.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/MapPlacemarksFragment"
+        android:name="com.example.silvanadorantescode.taxi_location_android.presentation.ui.MapPlacemarkFragment"
+        android:label="@string/map_placemarks_fragment_label"
+        tools:layout="@layout/fragment_map_placemark">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_MapPlacemarksFragment_to_ListPlacemarksFragment"
+            app:destination="@id/ListPlacemarksFragment" />
     </fragment>
 </navigation>

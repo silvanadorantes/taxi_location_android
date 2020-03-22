@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TaxiLocationTextView">
+        <attr name="textStyle" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="TaxiLocationToolbarView">
+        <attr name="menu_toolbar" format="boolean"/>
+        <attr name="icon_left_toolbar" format="boolean"/>
+        <attr name="icon_right_toolbar" format="boolean"/>
+        <attr name="icon_right_drawable" format="integer"/>
+        <attr name="title_toolbar" format="string"/>
+        <attr name="logo_text" format="boolean"/>
+        <attr name="edit_icon" format="boolean"/>
+    </declare-styleable>
+
+</resources>
