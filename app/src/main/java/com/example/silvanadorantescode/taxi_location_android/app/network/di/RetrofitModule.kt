@@ -18,13 +18,15 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  * Created by SilvanaDorantes on 17/03/20.
  */
 
-@Module(includes = arrayOf(NetworkModule::class))
+@Module(includes = [NetworkModule::class])
 class RetrofitModule {
+
     @Provides
     @AppScope
     fun provideBaseUrl(resources: Resources): String {
         return resources.getString(R.string.api_url)
     }
+
 
     @Provides
     @AppScope

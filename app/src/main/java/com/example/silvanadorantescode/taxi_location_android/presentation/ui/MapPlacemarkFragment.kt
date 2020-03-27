@@ -1,20 +1,22 @@
 package com.example.silvanadorantescode.taxi_location_android.presentation.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.silvanadorantescode.taxi_location_android.R
+
 import com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem
+
 
 /**
  * Created by SilvanaDorantes on 20/03/20.
  */
 
-class MapPlacemarkFragment : Fragment() {
+class MapPlacemarkFragment : Fragment(){
 
     companion object{
         val TAG = MapPlacemarkFragment::class.java.simpleName
@@ -28,6 +30,8 @@ class MapPlacemarkFragment : Fragment() {
             return mapPlacemarkFragment
         }
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

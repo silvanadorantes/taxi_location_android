@@ -30,6 +30,7 @@
         android:layout_marginStart="@dimen/normal_padding"
         android:layout_marginTop="@dimen/normal_padding"
         android:padding="@dimen/xsmall_padding"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/content_icon_rigth"
         app:layout_constraintStart_toEndOf="@+id/icon_left">
 

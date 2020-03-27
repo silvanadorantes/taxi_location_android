@@ -13,7 +13,9 @@
 
         <action
             android:id="@+id/action_ListPlacemarksFragment_to_MapPlacemarksFragment"
-            app:destination="@id/MapPlacemarksFragment"/>
+            app:destination="@id/MapPlacemarksFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/MapPlacemarksFragment"
@@ -23,6 +25,8 @@
 
         <action
             android:id="@+id/action_MapPlacemarksFragment_to_ListPlacemarksFragment"
-            app:destination="@id/ListPlacemarksFragment" />
+            app:destination="@id/ListPlacemarksFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_right"/>
     </fragment>
 </navigation>

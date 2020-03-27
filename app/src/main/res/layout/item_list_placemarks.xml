@@ -1,10 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:clickable="true">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="model"
+            type="com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_list_placemarks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/xlarge_padding"
+        android:clickable="true"
+        android:onClick="@{() -> model.onItemClick(position)}"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="@dimen/small_padding"
+        app:cardCornerRadius="@dimen/xnormal_padding">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:text="@{model.getPlacemarksAt(position).name}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_subhead"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/xlarge_padding"
+                android:layout_marginStart="@dimen/xxxlarge_padding"
+                android:layout_marginLeft="@dimen/xxxlarge_padding"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/imgPlacemarks"
+                android:layout_width="@dimen/avatar_size"
+                android:layout_height="@dimen/avatar_size"
+                android:layout_marginEnd="@dimen/xxxlarge_padding"
+                android:layout_marginRight="@dimen/xxxlarge_padding"
+                android:layout_marginLeft="@dimen/xxxlarge_padding"
+                android:layout_marginStart="@dimen/xxxlarge_padding"
+                android:src="@drawable/ic_taxi_route_64"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.4" />
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:text="@{model.getPlacemarksAt(position).address}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/material_text_bodyM"
+                android:layout_marginLeft="@dimen/xxxlarge_padding"
+                android:layout_marginStart="@dimen/xxxlarge_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvCoordinates"
+                android:text="@string/coordinates"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/material_text_bodyM"
+                android:layout_marginLeft="@dimen/xxxlarge_padding"
+                android:layout_marginStart="@dimen/xxxlarge_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+
+            <LinearLayout
+                android:id="@+id/contentLatLng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_corner_category"
+                android:layout_marginStart="@dimen/xxxlarge_padding"
+                android:layout_marginLeft="@dimen/xxxlarge_padding"
+                android:layout_marginEnd="@dimen/xxxlarge_padding"
+                android:layout_marginRight="@dimen/xxxlarge_padding"
+                android:layout_marginTop="@dimen/small_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvCoordinates"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0">
+
+                <TextView
+                    android:id="@+id/latitud"
+                    android:text="@{model.getPlacemarksAt(position).coordinates.get(0).toString()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0071e7"
+                    android:textStyle="bold"
+                    android:gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/micro_padding"
+                    android:layout_marginLeft="@dimen/micro_padding"
+                    android:layout_marginEnd="@dimen/micro_padding"
+                    android:layout_marginRight="@dimen/micro_padding"
+                    android:layout_marginTop="@dimen/micro_padding"
+                    android:layout_marginBottom="@dimen/micro_padding"
+                    android:padding="@dimen/normal_padding"
+                    android:textSize="@dimen/material_text_bodyM"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCoordinates"
+                    app:layout_constraintStart_toStartOf="@+id/guideline5"
+                    app:layout_constraintEnd_toStartOf="@+id/longitud"
+                    app:layout_constraintHorizontal_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/longitud"
+                    android:text="@{model.getPlacemarksAt(position).coordinates.get(1).toString()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0071e7"
+                    android:textStyle="bold"
+                    android:gravity="end|center_vertical"
+                    android:layout_marginStart="@dimen/micro_padding"
+                    android:layout_marginLeft="@dimen/micro_padding"
+                    android:layout_marginEnd="@dimen/micro_padding"
+                    android:layout_marginRight="@dimen/micro_padding"
+                    android:layout_marginTop="@dimen/micro_padding"
+                    android:layout_marginBottom="@dimen/micro_padding"
+                    android:padding="@dimen/normal_padding"
+                    android:textSize="@dimen/material_text_bodyM"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCoordinates"
+                    app:layout_constraintStart_toEndOf="@+id/latitud"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0" />
+
+            </LinearLayout>
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/xnormal_padding" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/xextra_big_padding" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/xnormal_padding" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

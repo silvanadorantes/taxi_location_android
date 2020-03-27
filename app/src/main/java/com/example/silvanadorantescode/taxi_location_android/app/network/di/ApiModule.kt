@@ -5,13 +5,15 @@ import com.example.silvanadorantescode.taxi_location_android.app.network.api.Pla
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import javax.inject.Singleton
 
 /**
 * Created by SilvanaDorantes on 17/03/20.
 */
 
-@Module(includes = arrayOf(RetrofitModule::class))
+@Module(includes = [RetrofitModule::class])
 class ApiModule {
+
     @Provides
     @AppScope
     fun providePlacemarksApi(retrofit: Retrofit): PlacemarksApi{

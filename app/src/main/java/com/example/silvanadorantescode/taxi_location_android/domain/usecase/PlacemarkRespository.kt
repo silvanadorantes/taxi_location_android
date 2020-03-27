@@ -8,11 +8,8 @@ import com.example.silvanadorantescode.taxi_location_android.app.network.data.pl
  */
 interface PlacemarkRespository {
     fun getListPlacemarks(): MutableLiveData<List<PlacemarksListItem>>
-    fun callListPlacemarksAPI(resultListener: ResultListener)
+    fun callListPlacemarksAPI()
 
-    interface ResultListener{
-        fun onListPlacemarksSuccess(listPlacemarks: List<PlacemarksListItem>)
-        fun onFailure(msg: String)
-        fun onFailure(msg: Int)
-    }
+
+    
 }
