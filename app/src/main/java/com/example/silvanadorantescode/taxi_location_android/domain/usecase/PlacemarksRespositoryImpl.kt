@@ -22,7 +22,6 @@ import javax.inject.Singleton
 class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
 
     val TAG = PlacemarksRespositoryImpl::class.java.simpleName
-    lateinit var context: Context
     private var placemarksList = MutableLiveData<List<PlacemarksListItem>>()
 
     //Subject MutableLiveData
@@ -46,15 +45,21 @@ class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
 
             override fun onRequestFail(errorMessage: String) {
                 Log.d(TAG, "FailResponse")
-                Commons.makeToast(errorMessage, context)
+
             }
             override fun onRequestFail(errorCode: Int) {
                 Log.d(TAG, "FailResponse")
-                if (errorCode == NetworkCallback.NO_HAVE_INTERNET)
-                    Commons.makeToast(Commons.getString(R.string.no_internet), context)
+                if (errorCode == NetworkCallback.NO_HAVE_INTERNET){
+                    Log.d(TAG,"NO HAVE INTERNET")
 
-                if (errorCode == NetworkCallback.ERROR_CONNECTION)
-                    Commons.makeToast(Commons.getString(R.string.network_error), context)
+                }
+
+
+                if (errorCode == NetworkCallback.ERROR_CONNECTION){
+                    Log.d(TAG,"Error CONNECTION")
+
+                }
+
 
             }
         })
