@@ -51,7 +51,7 @@ class App : Application(){
         INSTANCE = this
         turnOnStrictMode()
         initComponent()
-        viewModelInjector
+        getInjector()
 
 
 
@@ -79,9 +79,7 @@ class App : Application(){
 
     }
 
-    fun initVMInjector(){
-
-    }
+    fun getInjector(): ViewModelInjector = viewModelInjector
 
 
 

@@ -8,6 +8,7 @@ import com.example.silvanadorantescode.taxi_location_android.app.network.data.pl
 import com.example.silvanadorantescode.taxi_location_android.domain.usecase.PlacemarkRespository
 import com.example.silvanadorantescode.taxi_location_android.domain.usecase.PlacemarksRespositoryImpl
 import com.example.silvanadorantescode.taxi_location_android.presentation.adapter.PlacemarksAdapter
+import com.example.silvanadorantescode.taxi_location_android.util.base.BaseViewModel
 import javax.inject.Inject
 
 /**
@@ -15,20 +16,20 @@ import javax.inject.Inject
  */
 
 
-class PlacemarksViewModel(): ViewModel() {
+class PlacemarksViewModel(): BaseViewModel() {
 
     private val TAG = PlacemarksViewModel::class.java.simpleName
     private var recyclerPlacemarksAdapter:PlacemarksAdapter? = null
     var selected: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
-    private var placemarksRespositoryImpl: PlacemarksRespositoryImpl? = null
+    @Inject lateinit var placemarksRespositoryImpl:PlacemarksRespositoryImpl
 
 
     fun callPlacemarks(){
-        placemarksRespositoryImpl?.callListPlacemarksAPI()
+        placemarksRespositoryImpl.callListPlacemarksAPI()
     }
 
-    fun getPlacemarks(): MutableLiveData<List<PlacemarksListItem>>?{
-        return placemarksRespositoryImpl?.getListPlacemarks()
+    fun getPlacemarks(): MutableLiveData<List<PlacemarksListItem>>{
+        return placemarksRespositoryImpl.getListPlacemarks()
     }
 
     fun setListPlacemarksInRecyclerAdapter(listPlacemarks: List<PlacemarksListItem>){
@@ -39,12 +40,12 @@ class PlacemarksViewModel(): ViewModel() {
     }
 
     fun getRecyclerPlacemarksAdapter(): PlacemarksAdapter?{
-        recyclerPlacemarksAdapter = PlacemarksAdapter(this, R.id.item_list_placemarks)
+        recyclerPlacemarksAdapter = PlacemarksAdapter(this)
         return recyclerPlacemarksAdapter
     }
 
     fun getPlacemarksAt(position: Int):PlacemarksListItem?{
-        var listPlacemarks: List<PlacemarksListItem>? = placemarksRespositoryImpl?.getListPlacemarks()?.value
+        var listPlacemarks: List<PlacemarksListItem>? = placemarksRespositoryImpl.getListPlacemarks().value
         return listPlacemarks?.get(position)
     }
 
