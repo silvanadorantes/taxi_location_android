@@ -15,7 +15,7 @@ import com.example.silvanadorantescode.taxi_location_android.presentation.viewmo
 /**
  * Created by SilvanaDorantes on 21/03/20.
  */
-class PlacemarksAdapter(var placemarksViewModel: PlacemarksViewModel) : RecyclerView.Adapter<PlacemarksAdapter.PlacemarksViewHolder>() {
+class PlacemarksAdapter : RecyclerView.Adapter<PlacemarksAdapter.PlacemarksViewHolder>() {
 
      var listPlacemarks: List<PlacemarksListItem>? = null
 
@@ -35,7 +35,7 @@ class PlacemarksAdapter(var placemarksViewModel: PlacemarksViewModel) : Recycler
     }
 
     override fun onBindViewHolder(holder: PlacemarksViewHolder, position: Int) {
-        holder.setData(placemarksViewModel, position)
+        holder.setData(listPlacemarks!!.get(position))
     }
 
 
@@ -44,10 +44,13 @@ class PlacemarksAdapter(var placemarksViewModel: PlacemarksViewModel) : Recycler
         private var binding: ItemListPlacemarksBindingImpl? = null
 
 
-        fun setData(placemarksViewModel: PlacemarksViewModel, position:Int){
-            binding?.setVariable(BR.model, placemarksViewModel)
-            binding?.setVariable(BR.position, position)
-            binding?.executePendingBindings()
+        fun setData(item: PlacemarksListItem){
+            binding?.apply {
+                placemarks = item
+                executePendingBindings()
+            }
+
+
         }
     }
 }

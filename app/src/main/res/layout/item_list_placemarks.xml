@@ -13,6 +13,10 @@
             name="model"
             type="com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel" />
 
+        <variable
+            name="placemarks"
+            type="com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -33,10 +37,11 @@
 
             <TextView
                 android:id="@+id/tvName"
-                android:text="@{model.getPlacemarksAt(position).name}"
+                android:text="@{placemarks.name}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/material_text_subhead"
+                android:textColor="@color/colorPrimaryText"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/xlarge_padding"
                 android:layout_marginStart="@dimen/xxxlarge_padding"
@@ -63,10 +68,11 @@
 
             <TextView
                 android:id="@+id/tvAddress"
-                android:text="@{model.getPlacemarksAt(position).address}"
+                android:text="@{placemarks.address}"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
                 android:layout_marginLeft="@dimen/xxxlarge_padding"
                 android:layout_marginStart="@dimen/xxxlarge_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvName"
@@ -80,6 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
                 android:layout_marginLeft="@dimen/xxxlarge_padding"
                 android:layout_marginStart="@dimen/xxxlarge_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvAddress"
@@ -106,10 +113,10 @@
 
                 <TextView
                     android:id="@+id/latitud"
-                    android:text="@{model.getPlacemarksAt(position).coordinates.get(0).toString()}"
+                    android:text="@{placemarks.coordinates.get(0).toString()}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#0071e7"
+                    android:textColor="@color/colorPrimaryText"
                     android:textStyle="bold"
                     android:gravity="start|center_vertical"
                     android:layout_marginStart="@dimen/micro_padding"
@@ -127,10 +134,10 @@
 
                 <TextView
                     android:id="@+id/longitud"
-                    android:text="@{model.getPlacemarksAt(position).coordinates.get(1).toString()}"
+                    android:text="@{placemarks.coordinates.get(1).toString()}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#0071e7"
+                    android:textColor="@color/colorPrimaryText"
                     android:textStyle="bold"
                     android:gravity="end|center_vertical"
                     android:layout_marginStart="@dimen/micro_padding"

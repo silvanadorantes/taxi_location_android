@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.silvanadorantescode.taxi_location_android.R
 import com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem
 import com.example.silvanadorantescode.taxi_location_android.databinding.FragmentListPlacemarksBinding
+import com.example.silvanadorantescode.taxi_location_android.presentation.adapter.PlacemarksAdapter
 import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel
 
 import javax.inject.Inject
@@ -51,9 +52,9 @@ class ListPlacemarksFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         listPlacemarksBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_placemarks, container, false)
         placemarksViewModel = ViewModelProviders.of(this).get(PlacemarksViewModel::class.java)
+        context ?: return listPlacemarksBinding.root
         listPlacemarksBinding.model = placemarksViewModel
         listPlacemarksBinding.lifecycleOwner = this
-
         setUpListUpdate()
 
 
@@ -70,11 +71,12 @@ class ListPlacemarksFragment : Fragment(){
 
     }
 
+
+
+
     fun setUpListUpdate(){
-        //CallPlacemarks
         Log.d(TAG, "CallPlacemarks")
         placemarksViewModel.callPlacemarks()
-        //GetPlacemarks - ListPlacemarks
         Log.d(TAG, "GetPlacemarks - ListPlacemarks")
         placemarksViewModel.getPlacemarks()?.observe(viewLifecycleOwner, Observer {
             listPlacemarks: List<PlacemarksListItem> ->
