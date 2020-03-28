@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/xxbig_padding"
+    android:background="@color/colorPrimary"
+    android:clickable="true">
+
+    <ImageView
+        android:id="@+id/icon_left"
+        android:layout_width="@dimen/icon_xnormal"
+        android:layout_height="@dimen/icon_xnormal"
+        android:layout_marginBottom="@dimen/normal_padding"
+        android:layout_marginLeft="@dimen/normal_padding"
+        android:layout_marginStart="@dimen/normal_padding"
+        android:layout_marginTop="@dimen/normal_padding"
+        android:padding="@dimen/small_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/icon_center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/normal_padding"
+        android:layout_marginLeft="@dimen/normal_padding"
+        android:layout_marginRight="@dimen/normal_padding"
+        android:layout_marginStart="@dimen/normal_padding"
+        android:layout_marginTop="@dimen/normal_padding"
+        android:padding="@dimen/xsmall_padding"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/content_icon_rigth"
+        app:layout_constraintStart_toEndOf="@+id/icon_left">
+
+        <ImageView
+            android:id="@+id/logo_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/title_header"
+            android:layout_width="@dimen/editext_field_width_2"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/material_text_subhead"
+            android:textAlignment="center"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/content_icon_rigth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/normal_padding"
+        android:layout_marginEnd="@dimen/normal_padding"
+        android:layout_marginRight="@dimen/normal_padding"
+        android:layout_marginTop="@dimen/normal_padding"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/icon_rigth"
+            android:padding="4dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/count_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/material_text_small_2"
+            android:visibility="gone"
+            android:text="0" />
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

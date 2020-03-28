@@ -85,7 +85,12 @@ dependencies {
 
     // -------- lifecycle -----------
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.activity:activity-ktx:1.1.0"
+    implementation "androidx.fragment:fragment-ktx:1.2.3"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
+
 
     // -------- Retrofit -----------
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
@@ -101,7 +106,14 @@ dependencies {
     // -------- Dagger -----------
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+
     compileOnly "org.glassfish:javax.annotation:$rootProject.glassfishVersion"
+
+    // Tools
+    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
 
     // -------- CircleImagenview -----------
     implementation 'de.hdodenhof:circleimageview:3.1.0'

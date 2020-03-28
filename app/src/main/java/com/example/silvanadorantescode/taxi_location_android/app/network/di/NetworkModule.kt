@@ -13,6 +13,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Scope
+import javax.inject.Singleton
 
 
 /**
@@ -37,11 +39,13 @@ class NetworkModule {
         return Cache(cacheFile, 10 * 1000 * 1000) //10MB Cahe
     }
 
+
     @Provides
     @AppScope
     fun provideCacheFile(context: Context): File {
         return File(context.getCacheDir(), "okhttp_cache")
     }
+
 
     @Provides
     @AppScope

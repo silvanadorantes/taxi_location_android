@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">taxi_location_android</string>
+    <string name="app_name">Taxi Location</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="list_placemarks_fragment_label">ListPlacemarks Fragment</string>
+    <string name="map_placemarks_fragment_label">MapPlacemarks Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -22,5 +22,8 @@
     <string name="lorem_ipsum_small">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
     <string name="lorem_ipsum_small_1">Lorem ipsum dolor sit amet.</string>
     <string name="error" translatable="false">Error</string>
+    
+    <string name="list_placemarks">List of placemarks</string>
+    <string name="coordinates">Coordinates</string>
 
 </resources>
