@@ -10,7 +10,7 @@
             type="android.view.View.OnClickListener" />
 
         <variable
-            name="placemarks"
+            name="placemarksListItem"
             type="com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem" />
 
     </data>
@@ -35,7 +35,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{placemarks.name}"
+                android:text="@{placemarksListItem.name}"
                 android:textSize="@dimen/material_text_subhead"
                 android:textColor="@color/colorPrimaryText"
                 android:textStyle="bold"
@@ -66,7 +66,7 @@
                 android:id="@+id/tvAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{placemarks.address}"
+                android:text="@{placemarksListItem.name}"
                 android:textSize="@dimen/material_text_bodyM"
                 android:textColor="@color/colorPrimaryText"
                 android:layout_marginLeft="@dimen/xxxlarge_padding"
@@ -111,7 +111,7 @@
                     android:id="@+id/latitud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{placemarks.coordinates.get(0).toString()}"
+                    android:text="@{placemarksListItem.coordinates.get(0).toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textStyle="bold"
                     android:gravity="start|center_vertical"
@@ -132,7 +132,7 @@
                     android:id="@+id/longitud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{placemarks.coordinates.get(1).toString()}"
+                    android:text="@{placemarksListItem.coordinates.get(1).toString()}"
                     android:textColor="@color/colorPrimaryText"
                     android:textStyle="bold"
                     android:gravity="end|center_vertical"
