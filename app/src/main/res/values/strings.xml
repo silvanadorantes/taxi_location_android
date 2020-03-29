@@ -22,5 +22,8 @@
     <string name="lorem_ipsum_small">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
     <string name="lorem_ipsum_small_1">Lorem ipsum dolor sit amet.</string>
     <string name="error" translatable="false">Error</string>
+    
+    <string name="list_placemarks">List of placemarks</string>
+    <string name="coordinates">Coordinates</string>
 
 </resources>

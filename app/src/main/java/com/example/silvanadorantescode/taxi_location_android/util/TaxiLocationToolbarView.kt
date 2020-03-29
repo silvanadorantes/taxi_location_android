@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.Nullable
 import com.example.silvanadorantescode.taxi_location_android.R
@@ -29,7 +28,7 @@ class TaxiLocationToolbarView : LinearLayout {
 
     fun init(@Nullable set: AttributeSet?, context: Context){
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        inflater.inflate(R.layout.toolbar_taxi_location, this, true)
+        inflater.inflate(R.layout.taxi_location_toolbar, this, true)
         iconLeft = findViewById<View>(R.id.icon_left) as ImageView
         iconRight = findViewById<View>(R.id.icon_rigth) as ImageView
         titleHeader = findViewById<View>(R.id.title_header) as TextView

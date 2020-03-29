@@ -5,6 +5,7 @@ import android.content.res.Resources
 import com.example.silvanadorantescode.taxi_location_android.app.App
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 /**
  * Created by SilvanaDorantes on 17/03/20.
@@ -24,11 +25,13 @@ class AppModule(val app: App) {
         return app.getResources()
     }
 
+
     @Provides
     @AppScope
     fun provideApplicationContext(): Context {
         return app
     }
+
 
     @Provides
     @AppScope

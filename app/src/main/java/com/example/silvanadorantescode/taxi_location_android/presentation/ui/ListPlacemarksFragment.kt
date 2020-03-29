@@ -1,19 +1,34 @@
 package com.example.silvanadorantescode.taxi_location_android.presentation.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.silvanadorantescode.taxi_location_android.R
+import com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem
+import com.example.silvanadorantescode.taxi_location_android.databinding.FragmentListPlacemarksBinding
+import com.example.silvanadorantescode.taxi_location_android.presentation.adapter.PlacemarksAdapter
+import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel
+
+import javax.inject.Inject
 
 /**
  * Created by SilvanaDorantes on 20/03/20.
  */
 
-class ListPlacemarksFragment : Fragment() {
+class ListPlacemarksFragment : Fragment(){
+
+
+
+    @Inject
+    lateinit var placemarksViewModel: PlacemarksViewModel
 
     companion object{
         val TAG = ListPlacemarksFragment::class.java.simpleName
@@ -27,20 +42,46 @@ class ListPlacemarksFragment : Fragment() {
         }
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_placemarks, container, false)
+        val listPlacemarksBinding = FragmentListPlacemarksBinding.inflate(inflater, container, false)
+        context ?: return listPlacemarksBinding.root
+
+        placemarksViewModel = ViewModelProviders.of(this).get(PlacemarksViewModel::class.java)
+
+        val adapter = PlacemarksAdapter()
+        listPlacemarksBinding.rvListPlacemarks.adapter = adapter
+        Log.d(TAG, "adapter" + " " + adapter)
+        subscribeUi(adapter)
+        adapter.notifyDataSetChanged()
+        return listPlacemarksBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_ListPlacemarksFragment_to_MapPlacemarksFragment)
-        }
     }
+
+    private fun subscribeUi(adapter: PlacemarksAdapter){
+        Log.d(TAG, "CallPlacemarks")
+        placemarksViewModel.callPlacemarks()
+        Log.d(TAG, "GetPlacemarks - ListPlacemarks")
+        placemarksViewModel.getPlacemarks()?.observe(viewLifecycleOwner, Observer {
+            listPlacemarks: List<PlacemarksListItem> ->
+            Log.d(TAG, "listPlacemarksSize" + " " + listPlacemarks!!.size)
+            Log.d(TAG, "listPlacemarks" + " " + listPlacemarks)
+            adapter.submitList(listPlacemarks)
+            Log.d(TAG, "listPlacemarksSize" + " " + listPlacemarks!!.size)
+            Log.d(TAG, "listPlacemarks" + " " + listPlacemarks)
+        })
+
+    }
+
+
 }
