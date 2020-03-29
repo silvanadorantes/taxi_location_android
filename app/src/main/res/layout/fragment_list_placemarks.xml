@@ -3,19 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="model"
-            type="com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel" />
-
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/framgent_list_placemarks"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient"
+        android:background="@color/colorPrimary"
         android:clickable="true"
         tools:context=".presentation.ui.ListPlacemarksFragment">
 
@@ -99,7 +92,7 @@
             </com.google.android.material.appbar.AppBarLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerPlacemarks"
+                android:id="@+id/rv_listPlacemarks"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/imageView2"
@@ -110,9 +103,9 @@
                 android:layout_marginRight="@dimen/xlarge_padding"
                 android:orientation="vertical"
                 android:scrollbars="vertical"
+                android:clipToPadding="false"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:Adapter="@{model.recyclerPlacemarksAdapter}"
                 tools:listitem="@layout/item_list_placemarks"
                 />
 

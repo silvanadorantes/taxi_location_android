@@ -34,13 +34,13 @@ class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
     }
 
     fun callListPlacemarksAPI() {
-        //var listPlacemarks: ArrayList<PlacemarksListItem>? = ArrayList<PlacemarksListItem>()
+        var listPlacemarks: ArrayList<PlacemarksListItem>? = ArrayList<PlacemarksListItem>()
         placemarksApi.getList().enqueue(object : NetworkCallback<PlacemarksListResponse>(){
             override fun onRequestSuccess(response: PlacemarksListResponse) {
                 Log.d(TAG, "ListPlacemarkOK")
 
-                //listPlacemarks?.addAll(response.placemarks)
-                placemarksList.value = response.placemarks
+                listPlacemarks?.addAll(response.placemarks)
+                placemarksList.value = listPlacemarks
             }
 
             override fun onRequestFail(errorMessage: String) {

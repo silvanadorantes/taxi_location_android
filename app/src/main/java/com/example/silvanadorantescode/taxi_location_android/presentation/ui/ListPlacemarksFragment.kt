@@ -25,7 +25,7 @@ import javax.inject.Inject
 
 class ListPlacemarksFragment : Fragment(){
 
-    lateinit var listPlacemarksBinding: FragmentListPlacemarksBinding
+
 
     @Inject
     lateinit var placemarksViewModel: PlacemarksViewModel
@@ -50,31 +50,25 @@ class ListPlacemarksFragment : Fragment(){
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        listPlacemarksBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_placemarks, container, false)
-        placemarksViewModel = ViewModelProviders.of(this).get(PlacemarksViewModel::class.java)
+        val listPlacemarksBinding = FragmentListPlacemarksBinding.inflate(inflater, container, false)
         context ?: return listPlacemarksBinding.root
-        listPlacemarksBinding.model = placemarksViewModel
-        listPlacemarksBinding.lifecycleOwner = this
-        setUpListUpdate()
 
+        placemarksViewModel = ViewModelProviders.of(this).get(PlacemarksViewModel::class.java)
 
-
-
+        val adapter = PlacemarksAdapter()
+        listPlacemarksBinding.rvListPlacemarks.adapter = adapter
+        Log.d(TAG, "adapter" + " " + adapter)
+        subscribeUi(adapter)
+        adapter.notifyDataSetChanged()
         return listPlacemarksBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-
     }
 
-
-
-
-    fun setUpListUpdate(){
+    private fun subscribeUi(adapter: PlacemarksAdapter){
         Log.d(TAG, "CallPlacemarks")
         placemarksViewModel.callPlacemarks()
         Log.d(TAG, "GetPlacemarks - ListPlacemarks")
@@ -82,20 +76,12 @@ class ListPlacemarksFragment : Fragment(){
             listPlacemarks: List<PlacemarksListItem> ->
             Log.d(TAG, "listPlacemarksSize" + " " + listPlacemarks!!.size)
             Log.d(TAG, "listPlacemarks" + " " + listPlacemarks)
-            placemarksViewModel.setListPlacemarksInRecyclerAdapter(listPlacemarks)
+            adapter.submitList(listPlacemarks)
             Log.d(TAG, "listPlacemarksSize" + " " + listPlacemarks!!.size)
             Log.d(TAG, "listPlacemarks" + " " + listPlacemarks)
         })
 
-        setupListClick()
     }
 
-    fun setupListClick(){
-        placemarksViewModel.getPlacemarksSelected().observe(viewLifecycleOwner,
-            Observer {placemarksListItem: PlacemarksListItem? ->
-                Log.d(TAG,"placemarks" + " " + placemarksListItem?.name)
-                Log.d(TAG, "placemarksAddress" + " " + placemarksListItem?.address)
-                findNavController().navigate(R.id.action_ListPlacemarksFragment_to_MapPlacemarksFragment)
-            })
-    }
+
 }
