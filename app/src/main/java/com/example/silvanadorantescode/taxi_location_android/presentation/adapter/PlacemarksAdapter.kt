@@ -39,13 +39,13 @@ class PlacemarksAdapter : ListAdapter<PlacemarksListItem, PlacemarksAdapter.Plac
 
 
 
-    class PlacemarksViewHolder(binding: ItemListPlacemarksBinding): RecyclerView.ViewHolder(binding.root){
-        private var binding: ItemListPlacemarksBinding? = null
+    class PlacemarksViewHolder(private val binding: ItemListPlacemarksBinding): RecyclerView.ViewHolder(binding.root){
+
 
         init {
             binding.setClickListener {
                 binding.setClickListener {
-                    binding?.placemarks?.let {placemarksListItem ->
+                    binding.placemarksListItem?.let {placemarksListItem ->
                         navigateToPlacemarksMap(placemarksListItem, it)
 
                     }
@@ -55,18 +55,15 @@ class PlacemarksAdapter : ListAdapter<PlacemarksListItem, PlacemarksAdapter.Plac
                 }
             }
 
-        private fun navigateToPlacemarksMap(placemarks: PlacemarksListItem, view: View){
+        private fun navigateToPlacemarksMap(placemarksListItem:PlacemarksListItem, view: View){
 
         }
 
 
-
-
-
         fun bind(item: PlacemarksListItem){
-              binding?.apply {
-                placemarks = item
-                  Log.d(TAG, "placemarks" + " " + placemarks)
+              binding.apply {
+                placemarksListItem = item
+                  Log.d(TAG, "placemarks" + " " + placemarksListItem)
                   Log.d(TAG, "item" + " " + item)
                   executePendingBindings()
               }

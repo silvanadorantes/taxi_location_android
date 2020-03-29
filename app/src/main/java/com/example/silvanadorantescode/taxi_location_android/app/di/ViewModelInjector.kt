@@ -16,6 +16,7 @@ interface ViewModelInjector {
 
     fun inject(placemarksViewModel: PlacemarksViewModel)
 
+
     @Component.Builder
     interface Builder{
         fun build(): ViewModelInjector

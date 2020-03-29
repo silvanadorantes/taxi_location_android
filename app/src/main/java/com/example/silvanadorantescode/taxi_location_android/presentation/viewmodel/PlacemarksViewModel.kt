@@ -21,7 +21,7 @@ class PlacemarksViewModel(): BaseViewModel() {
     private val TAG = PlacemarksViewModel::class.java.simpleName
     private var recyclerPlacemarksAdapter:PlacemarksAdapter? = null
     var selected: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
-    var itemPlacemarks: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
+    var placemark: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
 
 
     @Inject
@@ -43,8 +43,9 @@ class PlacemarksViewModel(): BaseViewModel() {
         return listPlacemarks?.get(position)
     }
 
-    
-
+    fun getPlacemarksItem(): MutableLiveData<PlacemarksListItem>{
+        return placemark
+    }
 
 
     fun getPlacemarksSelected(): MutableLiveData<PlacemarksListItem>{
@@ -55,9 +56,6 @@ class PlacemarksViewModel(): BaseViewModel() {
         val placemarksListItem = getPlacemarksAt(index)
         selected.value = placemarksListItem
     }
-
-
-
 
 
 
