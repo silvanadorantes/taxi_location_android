@@ -6,6 +6,7 @@
     <color name="colorAccent">#d500f9</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="blue">#0071e7</color>
     <color name="transparency_black">#80000000</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#727272</color>
