@@ -22,7 +22,10 @@ class PlacemarksViewModel(): BaseViewModel() {
     private var recyclerPlacemarksAdapter:PlacemarksAdapter? = null
     var selected: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
     var itemPlacemarks: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
-    @Inject lateinit var placemarksRespositoryImpl:PlacemarksRespositoryImpl
+
+
+    @Inject
+    lateinit var placemarksRespositoryImpl:PlacemarksRespositoryImpl
 
 
     fun callPlacemarks(){
@@ -33,22 +36,14 @@ class PlacemarksViewModel(): BaseViewModel() {
         return placemarksRespositoryImpl.getListPlacemarks()
     }
 
-    fun setListPlacemarksInRecyclerAdapter(listPlacemarks: List<PlacemarksListItem>){
-        recyclerPlacemarksAdapter?.setPlacemarksList(listPlacemarks)
-        Log.d(TAG, "listPlacemarksSize" +" "+ listPlacemarks.size)
-        Log.d(TAG, "listPlacemarks" +" "+ listPlacemarks)
-        recyclerPlacemarksAdapter?.notifyDataSetChanged()
-    }
 
-    fun getRecyclerPlacemarksAdapter(): PlacemarksAdapter?{
-        recyclerPlacemarksAdapter = PlacemarksAdapter()
-        return recyclerPlacemarksAdapter
-    }
 
     fun getPlacemarksAt(position: Int):PlacemarksListItem?{
         var listPlacemarks: List<PlacemarksListItem>? = placemarksRespositoryImpl.getListPlacemarks().value
         return listPlacemarks?.get(position)
     }
+
+    
 
 
 
@@ -60,6 +55,10 @@ class PlacemarksViewModel(): BaseViewModel() {
         val placemarksListItem = getPlacemarksAt(index)
         selected.value = placemarksListItem
     }
+
+
+
+
 
 
 }

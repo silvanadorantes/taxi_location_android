@@ -3,29 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/ListPlacemarksFragment">
+    app:startDestination="@id/listplacemarks_framgent">
 
     <fragment
-        android:id="@+id/ListPlacemarksFragment"
+        android:id="@+id/listplacemarks_framgent"
         android:name="com.example.silvanadorantescode.taxi_location_android.presentation.ui.ListPlacemarksFragment"
         android:label="@string/list_placemarks_fragment_label"
         tools:layout="@layout/fragment_list_placemarks">
 
         <action
             android:id="@+id/action_ListPlacemarksFragment_to_MapPlacemarksFragment"
-            app:destination="@id/MapPlacemarksFragment"
+            app:destination="@id/mapplacemark_fragment"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
-        android:id="@+id/MapPlacemarksFragment"
+        android:id="@+id/mapplacemark_fragment"
         android:name="com.example.silvanadorantescode.taxi_location_android.presentation.ui.MapPlacemarkFragment"
         android:label="@string/map_placemarks_fragment_label"
         tools:layout="@layout/fragment_map_placemark">
+        <argument
+            android:name="placemark"
+            app:argType="com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem"/>
 
         <action
             android:id="@+id/action_MapPlacemarksFragment_to_ListPlacemarksFragment"
-            app:destination="@id/ListPlacemarksFragment"
+            app:destination="@id/listplacemarks_framgent"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_right"/>
     </fragment>
