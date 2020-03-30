@@ -33,7 +33,7 @@
 
             <TextView
                 android:id="@+id/tvName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{placemarksListItem.name}"
                 android:textSize="@dimen/material_text_subhead"
@@ -42,6 +42,8 @@
                 android:layout_marginTop="@dimen/xlarge_padding"
                 android:layout_marginStart="@dimen/xxxlarge_padding"
                 android:layout_marginLeft="@dimen/xxxlarge_padding"
+                android:layout_marginEnd="@dimen/normal_padding"
+                android:layout_marginRight="@dimen/normal_padding"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -64,13 +66,16 @@
 
             <TextView
                 android:id="@+id/tvAddress"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{placemarksListItem.name}"
+                android:text="@{placemarksListItem.address}"
                 android:textSize="@dimen/material_text_bodyM"
                 android:textColor="@color/colorPrimaryText"
+                android:maxLines="10"
                 android:layout_marginLeft="@dimen/xxxlarge_padding"
                 android:layout_marginStart="@dimen/xxxlarge_padding"
+                android:layout_marginRight="@dimen/normal_padding"
+                android:layout_marginEnd="@dimen/normal_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -112,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{placemarksListItem.coordinates.get(0).toString()}"
-                    android:textColor="@color/colorPrimaryText"
+                    android:textColor="@color/blue"
                     android:textStyle="bold"
                     android:gravity="start|center_vertical"
                     android:layout_marginStart="@dimen/micro_padding"
@@ -121,7 +126,7 @@
                     android:layout_marginRight="@dimen/micro_padding"
                     android:layout_marginTop="@dimen/micro_padding"
                     android:layout_marginBottom="@dimen/micro_padding"
-                    android:padding="@dimen/normal_padding"
+                    android:padding="@dimen/micro_padding"
                     android:textSize="@dimen/material_text_bodyM"
                     app:layout_constraintTop_toBottomOf="@+id/tvCoordinates"
                     app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -129,11 +134,22 @@
                     app:layout_constraintHorizontal_bias="0.0" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/material_text_small"
+                    android:text=","
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/xmicro_padding"
+                    android:layout_marginBottom="@dimen/xmicro_padding"
+                   />
+
+                <TextView
                     android:id="@+id/longitud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{placemarksListItem.coordinates.get(1).toString()}"
-                    android:textColor="@color/colorPrimaryText"
+                    android:textColor="@color/blue"
                     android:textStyle="bold"
                     android:gravity="end|center_vertical"
                     android:layout_marginStart="@dimen/micro_padding"
@@ -142,7 +158,7 @@
                     android:layout_marginRight="@dimen/micro_padding"
                     android:layout_marginTop="@dimen/micro_padding"
                     android:layout_marginBottom="@dimen/micro_padding"
-                    android:padding="@dimen/normal_padding"
+                    android:padding="@dimen/micro_padding"
                     android:textSize="@dimen/material_text_bodyM"
                     app:layout_constraintTop_toBottomOf="@+id/tvCoordinates"
                     app:layout_constraintStart_toEndOf="@+id/latitud"

@@ -5,17 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
+
 import com.example.silvanadorantescode.taxi_location_android.R
 import com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem
 import com.example.silvanadorantescode.taxi_location_android.databinding.FragmentListPlacemarksBinding
 import com.example.silvanadorantescode.taxi_location_android.presentation.adapter.PlacemarksAdapter
 import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel
+
 
 import javax.inject.Inject
 
@@ -46,6 +47,7 @@ class ListPlacemarksFragment : Fragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        placemarksViewModel = ViewModelProviders.of(this).get(PlacemarksViewModel::class.java)
 
     }
 
@@ -53,7 +55,7 @@ class ListPlacemarksFragment : Fragment(){
         val listPlacemarksBinding = FragmentListPlacemarksBinding.inflate(inflater, container, false)
         context ?: return listPlacemarksBinding.root
 
-        placemarksViewModel = ViewModelProviders.of(this).get(PlacemarksViewModel::class.java)
+
 
         val adapter = PlacemarksAdapter()
         listPlacemarksBinding.rvListPlacemarks.adapter = adapter
@@ -65,6 +67,7 @@ class ListPlacemarksFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
     }
 
