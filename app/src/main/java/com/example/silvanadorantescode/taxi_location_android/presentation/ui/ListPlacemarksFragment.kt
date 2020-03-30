@@ -16,6 +16,7 @@ import com.example.silvanadorantescode.taxi_location_android.app.network.data.pl
 import com.example.silvanadorantescode.taxi_location_android.databinding.FragmentListPlacemarksBinding
 import com.example.silvanadorantescode.taxi_location_android.presentation.adapter.PlacemarksAdapter
 import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel
+import kotlinx.android.synthetic.main.fragment_list_placemarks.*
 
 
 import javax.inject.Inject
@@ -60,7 +61,7 @@ class ListPlacemarksFragment : Fragment(){
         val adapter = PlacemarksAdapter()
         listPlacemarksBinding.rvListPlacemarks.adapter = adapter
         Log.d(TAG, "adapter" + " " + adapter)
-        subscribeUi(adapter)
+        subscribeUi(adapter, listPlacemarksBinding)
         adapter.notifyDataSetChanged()
         return listPlacemarksBinding.root
     }
@@ -71,17 +72,51 @@ class ListPlacemarksFragment : Fragment(){
 
     }
 
-    private fun subscribeUi(adapter: PlacemarksAdapter){
+    private fun subscribeUi(adapter: PlacemarksAdapter, listPlacemarksBinding: FragmentListPlacemarksBinding){
         Log.d(TAG, "CallPlacemarks")
         placemarksViewModel.callPlacemarks()
         Log.d(TAG, "GetPlacemarks - ListPlacemarks")
-        placemarksViewModel.getPlacemarks()?.observe(viewLifecycleOwner, Observer {
+        placemarksViewModel.getPlacemarks().observe(viewLifecycleOwner, Observer {
             listPlacemarks: List<PlacemarksListItem> ->
             Log.d(TAG, "listPlacemarksSize" + " " + listPlacemarks!!.size)
             Log.d(TAG, "listPlacemarks" + " " + listPlacemarks)
             adapter.submitList(listPlacemarks)
             Log.d(TAG, "listPlacemarksSize" + " " + listPlacemarks!!.size)
             Log.d(TAG, "listPlacemarks" + " " + listPlacemarks)
+        })
+
+        placemarksViewModel.getListPlacemarksLoading().observe(viewLifecycleOwner, Observer {
+            isLoading: Boolean ->
+
+            isLoading.let {
+                progressbar.visibility = if (it) View.VISIBLE else View.GONE
+
+            }
+        })
+
+        placemarksViewModel.getListPlacemarksSuccess().observe(viewLifecycleOwner, Observer {
+            isSuccess: Boolean ->
+
+            isSuccess.let {
+                progressbar.visibility = if (it) View.GONE else View.VISIBLE
+            }
+
+
+        })
+
+        placemarksViewModel.getListPlacemarksErrorMessage().observe(viewLifecycleOwner, Observer {
+            isError: Boolean ->
+            isError.let {
+                progressbar.visibility = if (it) View.GONE else View.VISIBLE
+
+            }
+        })
+
+        placemarksViewModel.getListPlacemarksErrorCode().observe(viewLifecycleOwner, Observer {
+            isErrorCode: Boolean ->
+            isErrorCode.let {
+                progressbar.visibility = if (it) View.GONE else View.VISIBLE
+            }
         })
 
     }

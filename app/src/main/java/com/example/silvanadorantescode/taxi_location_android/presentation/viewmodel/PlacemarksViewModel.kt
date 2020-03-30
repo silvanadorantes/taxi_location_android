@@ -23,6 +23,7 @@ class PlacemarksViewModel(): BaseViewModel() {
     var selected: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
     var placemark: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
     var error: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    var errorFail: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     var loading: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     var success: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
 
@@ -39,6 +40,22 @@ class PlacemarksViewModel(): BaseViewModel() {
         return placemarksRespositoryImpl.getListPlacemarks()
     }
 
+
+
+    fun getListPlacemarksSuccess(): MutableLiveData<Boolean>{
+        return placemarksRespositoryImpl.getListPlacemarksSuccess()
+    }
+
+    fun getListPlacemarksLoading(): MutableLiveData<Boolean>{
+        return placemarksRespositoryImpl.getListPlacemarksLoading()
+    }
+
+    fun getListPlacemarksErrorMessage(): MutableLiveData<Boolean>{
+        return error
+    }
+    fun getListPlacemarksErrorCode(): MutableLiveData<Boolean>{
+        return errorFail
+    }
 
 
     fun getPlacemarksAt(position: Int):PlacemarksListItem?{

@@ -26,6 +26,7 @@ class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
     private var success = MutableLiveData<Boolean>()
     private var loading = MutableLiveData<Boolean>()
     private var error = MutableLiveData<Boolean>()
+    private var errorFail = MutableLiveData<Boolean>()
 
     //Subject MutableLiveData
     //Observers List Coupon
@@ -36,30 +37,68 @@ class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
         return placemarksList
     }
 
+    fun getListPlacemarksSuccess(): MutableLiveData<Boolean>{
+        return success
+    }
+
+    fun getListPlacemarksLoading(): MutableLiveData<Boolean>{
+        return loading
+    }
+
+    fun getListPlacemarksErrorMessage(): MutableLiveData<Boolean>{
+        return error
+    }
+    fun getListPlacemarksErrorCode(): MutableLiveData<Boolean>{
+        return errorFail
+    }
+
+
+
+
+
+
     fun callListPlacemarksAPI() {
         var listPlacemarks: ArrayList<PlacemarksListItem>? = ArrayList<PlacemarksListItem>()
+        loading.value = true
         placemarksApi.getList().enqueue(object : NetworkCallback<PlacemarksListResponse>(){
             override fun onRequestSuccess(response: PlacemarksListResponse) {
                 Log.d(TAG, "ListPlacemarkOK")
 
                 listPlacemarks?.addAll(response.placemarks)
                 placemarksList.value = listPlacemarks
+                success.value = true
+                error.value = false
+                errorFail.value = false
+                loading.value = false
             }
 
             override fun onRequestFail(errorMessage: String) {
                 Log.d(TAG, "FailResponse")
+                success.value = false
+                loading.value = false
+                error.value = true
+                errorFail.value = false
 
             }
             override fun onRequestFail(errorCode: Int) {
                 Log.d(TAG, "FailResponse")
                 if (errorCode == NetworkCallback.NO_HAVE_INTERNET){
                     Log.d(TAG,"NO HAVE INTERNET")
+                    success.value = false
+                    loading.value = false
+                    error.value = false
+                    errorFail.value = true
 
                 }
 
 
                 if (errorCode == NetworkCallback.ERROR_CONNECTION){
                     Log.d(TAG,"Error CONNECTION")
+                    success.value = false
+                    loading.value = false
+                    error.value = false
+                    errorFail.value = true
+
 
                 }
 
