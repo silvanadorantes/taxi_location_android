@@ -16,6 +16,7 @@ import com.example.silvanadorantescode.taxi_location_android.app.network.data.pl
 import com.example.silvanadorantescode.taxi_location_android.databinding.FragmentListPlacemarksBinding
 import com.example.silvanadorantescode.taxi_location_android.presentation.adapter.PlacemarksAdapter
 import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_list_placemarks.*
 
 
@@ -94,30 +95,14 @@ class ListPlacemarksFragment : Fragment(){
             }
         })
 
-        placemarksViewModel.getListPlacemarksSuccess().observe(viewLifecycleOwner, Observer {
-            isSuccess: Boolean ->
-
-            isSuccess.let {
-                progressbar.visibility = if (it) View.GONE else View.VISIBLE
-            }
-
-
-        })
-
         placemarksViewModel.getListPlacemarksErrorMessage().observe(viewLifecycleOwner, Observer {
-            isError: Boolean ->
-            isError.let {
-                progressbar.visibility = if (it) View.GONE else View.VISIBLE
-
-            }
+            Snackbar.make(listPlacemarksBinding.root, it, Snackbar.LENGTH_LONG).show()
         })
 
         placemarksViewModel.getListPlacemarksErrorCode().observe(viewLifecycleOwner, Observer {
-            isErrorCode: Boolean ->
-            isErrorCode.let {
-                progressbar.visibility = if (it) View.GONE else View.VISIBLE
-            }
+            Snackbar.make(listPlacemarksBinding.root, it, Snackbar.LENGTH_LONG).show()
         })
+
 
     }
 

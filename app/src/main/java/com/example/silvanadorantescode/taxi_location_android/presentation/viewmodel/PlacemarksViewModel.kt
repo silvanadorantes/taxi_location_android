@@ -22,10 +22,10 @@ class PlacemarksViewModel(): BaseViewModel() {
     private var recyclerPlacemarksAdapter:PlacemarksAdapter? = null
     var selected: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
     var placemark: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
-    var error: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
-    var errorFail: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    var error: MutableLiveData<String> = MutableLiveData<String>()
+    var errorFail: MutableLiveData<String> = MutableLiveData<String>()
     var loading: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
-    var success: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+
 
 
     @Inject
@@ -42,19 +42,17 @@ class PlacemarksViewModel(): BaseViewModel() {
 
 
 
-    fun getListPlacemarksSuccess(): MutableLiveData<Boolean>{
-        return placemarksRespositoryImpl.getListPlacemarksSuccess()
-    }
+
 
     fun getListPlacemarksLoading(): MutableLiveData<Boolean>{
         return placemarksRespositoryImpl.getListPlacemarksLoading()
     }
 
-    fun getListPlacemarksErrorMessage(): MutableLiveData<Boolean>{
-        return error
+    fun getListPlacemarksErrorMessage(): MutableLiveData<String>{
+        return placemarksRespositoryImpl.getListPlacemarksErrorMessage()
     }
-    fun getListPlacemarksErrorCode(): MutableLiveData<Boolean>{
-        return errorFail
+    fun getListPlacemarksErrorCode(): MutableLiveData<String>{
+        return placemarksRespositoryImpl.getListPlacemarksErrorCode()
     }
 
 

@@ -23,10 +23,9 @@ class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
 
     val TAG = PlacemarksRespositoryImpl::class.java.simpleName
     private var placemarksList = MutableLiveData<List<PlacemarksListItem>>()
-    private var success = MutableLiveData<Boolean>()
     private var loading = MutableLiveData<Boolean>()
-    private var error = MutableLiveData<Boolean>()
-    private var errorFail = MutableLiveData<Boolean>()
+    private var error = MutableLiveData<String>()
+    private var errorFail = MutableLiveData<String>()
 
     //Subject MutableLiveData
     //Observers List Coupon
@@ -37,18 +36,15 @@ class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
         return placemarksList
     }
 
-    fun getListPlacemarksSuccess(): MutableLiveData<Boolean>{
-        return success
-    }
 
     fun getListPlacemarksLoading(): MutableLiveData<Boolean>{
         return loading
     }
 
-    fun getListPlacemarksErrorMessage(): MutableLiveData<Boolean>{
+    fun getListPlacemarksErrorMessage(): MutableLiveData<String>{
         return error
     }
-    fun getListPlacemarksErrorCode(): MutableLiveData<Boolean>{
+    fun getListPlacemarksErrorCode(): MutableLiveData<String>{
         return errorFail
     }
 
@@ -66,38 +62,31 @@ class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
 
                 listPlacemarks?.addAll(response.placemarks)
                 placemarksList.value = listPlacemarks
-                success.value = true
-                error.value = false
-                errorFail.value = false
                 loading.value = false
             }
 
             override fun onRequestFail(errorMessage: String) {
                 Log.d(TAG, "FailResponse")
-                success.value = false
                 loading.value = false
-                error.value = true
-                errorFail.value = false
+                error.value = errorMessage
+
 
             }
             override fun onRequestFail(errorCode: Int) {
                 Log.d(TAG, "FailResponse")
                 if (errorCode == NetworkCallback.NO_HAVE_INTERNET){
                     Log.d(TAG,"NO HAVE INTERNET")
-                    success.value = false
                     loading.value = false
-                    error.value = false
-                    errorFail.value = true
+                    errorFail.value = Commons.getString(errorCode)
 
                 }
 
 
                 if (errorCode == NetworkCallback.ERROR_CONNECTION){
                     Log.d(TAG,"Error CONNECTION")
-                    success.value = false
                     loading.value = false
-                    error.value = false
-                    errorFail.value = true
+
+                    errorFail.value = Commons.getString(errorCode)
 
 
                 }
