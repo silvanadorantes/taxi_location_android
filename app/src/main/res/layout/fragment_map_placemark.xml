@@ -6,21 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
-    tools:context=".presentation.ui.MapPlacemarkFragment">
+    tools:context=".presentation.ui.MapPlacemarkFragment"
+    android:focusable="true">
 
-    <com.example.silvanadorantescode.taxi_location_android.util.TaxiLocationToolbarView
+    <include
         android:id="@+id/taxi_location_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:title_toolbar="@string/app_name"
-        app:icon_left_toolbar="true"
-        app:menu_toolbar="false"
-        app:icon_right_toolbar="false"
+        layout="@layout/taxi_location_toolbar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <TextView

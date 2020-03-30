@@ -23,6 +23,9 @@ class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
 
     val TAG = PlacemarksRespositoryImpl::class.java.simpleName
     private var placemarksList = MutableLiveData<List<PlacemarksListItem>>()
+    private var success = MutableLiveData<Boolean>()
+    private var loading = MutableLiveData<Boolean>()
+    private var error = MutableLiveData<Boolean>()
 
     //Subject MutableLiveData
     //Observers List Coupon

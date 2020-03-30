@@ -22,6 +22,9 @@ class PlacemarksViewModel(): BaseViewModel() {
     private var recyclerPlacemarksAdapter:PlacemarksAdapter? = null
     var selected: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
     var placemark: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
+    var error: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    var loading: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    var success: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
 
 
     @Inject
