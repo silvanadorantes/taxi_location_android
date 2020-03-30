@@ -77,7 +77,7 @@ class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
                 if (errorCode == NetworkCallback.NO_HAVE_INTERNET){
                     Log.d(TAG,"NO HAVE INTERNET")
                     loading.value = false
-                    errorFail.value = Commons.getString(errorCode)
+                    errorFail.value = Commons.getString(R.string.no_internet)
 
                 }
 
@@ -86,7 +86,7 @@ class PlacemarksRespositoryImpl (var placemarksApi: PlacemarksApi){
                     Log.d(TAG,"Error CONNECTION")
                     loading.value = false
 
-                    errorFail.value = Commons.getString(errorCode)
+                    errorFail.value = Commons.getString(R.string.network_error)
 
 
                 }
