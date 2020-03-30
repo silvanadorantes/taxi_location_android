@@ -16,6 +16,7 @@ import com.example.silvanadorantescode.taxi_location_android.app.network.data.pl
 import com.example.silvanadorantescode.taxi_location_android.databinding.FragmentListPlacemarksBinding
 import com.example.silvanadorantescode.taxi_location_android.presentation.adapter.PlacemarksAdapter
 import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel
+import com.example.silvanadorantescode.taxi_location_android.util.Commons
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_list_placemarks.*
 
@@ -57,8 +58,6 @@ class ListPlacemarksFragment : Fragment(){
         val listPlacemarksBinding = FragmentListPlacemarksBinding.inflate(inflater, container, false)
         context ?: return listPlacemarksBinding.root
 
-
-
         val adapter = PlacemarksAdapter()
         listPlacemarksBinding.rvListPlacemarks.adapter = adapter
         Log.d(TAG, "adapter" + " " + adapter)
@@ -96,11 +95,12 @@ class ListPlacemarksFragment : Fragment(){
         })
 
         placemarksViewModel.getListPlacemarksErrorMessage().observe(viewLifecycleOwner, Observer {
-            Snackbar.make(listPlacemarksBinding.root, it, Snackbar.LENGTH_LONG).show()
+           Commons.makeToast(it, requireContext())
         })
 
         placemarksViewModel.getListPlacemarksErrorCode().observe(viewLifecycleOwner, Observer {
-            Snackbar.make(listPlacemarksBinding.root, it, Snackbar.LENGTH_LONG).show()
+           Commons.makeToast(it, requireContext())
+
         })
 
 

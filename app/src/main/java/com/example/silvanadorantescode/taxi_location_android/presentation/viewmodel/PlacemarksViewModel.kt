@@ -1,11 +1,7 @@
 package com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.silvanadorantescode.taxi_location_android.R
 import com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem
-import com.example.silvanadorantescode.taxi_location_android.domain.usecase.PlacemarkRespository
 import com.example.silvanadorantescode.taxi_location_android.domain.usecase.PlacemarksRespositoryImpl
 import com.example.silvanadorantescode.taxi_location_android.presentation.adapter.PlacemarksAdapter
 import com.example.silvanadorantescode.taxi_location_android.util.base.BaseViewModel
@@ -22,9 +18,6 @@ class PlacemarksViewModel(): BaseViewModel() {
     private var recyclerPlacemarksAdapter:PlacemarksAdapter? = null
     var selected: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
     var placemark: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
-    var error: MutableLiveData<String> = MutableLiveData<String>()
-    var errorFail: MutableLiveData<String> = MutableLiveData<String>()
-    var loading: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
 
 
 
@@ -61,9 +54,6 @@ class PlacemarksViewModel(): BaseViewModel() {
         return listPlacemarks?.get(position)
     }
 
-    fun getPlacemarksItem(): MutableLiveData<PlacemarksListItem>{
-        return placemark
-    }
 
 
     fun getPlacemarksSelected(): MutableLiveData<PlacemarksListItem>{
@@ -74,6 +64,8 @@ class PlacemarksViewModel(): BaseViewModel() {
         val placemarksListItem = getPlacemarksAt(index)
         selected.value = placemarksListItem
     }
+
+
 
 
 

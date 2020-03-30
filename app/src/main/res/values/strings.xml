@@ -26,4 +26,8 @@
     <string name="list_placemarks">List of placemarks</string>
     <string name="coordinates">Coordinates</string>
 
+    <string name="clientSecret" translatable="false">AIzaSyD7JhERpAtXcsq08JFcADWdu7d0brLBn1k</string>
+    <!--Maps-->
+    <string name="google_maps_key" translatable="false">AIzaSyD7JhERpAtXcsq08JFcADWdu7d0brLBn1k</string>
+
 </resources>

@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/xlarge_padding"
         android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:onClick="@{clickListener}"
         android:background="@color/white"
         app:cardElevation="@dimen/small_padding"

@@ -5,20 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.silvanadorantescode.taxi_location_android.BR
 import com.example.silvanadorantescode.taxi_location_android.R
 import com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem
 import com.example.silvanadorantescode.taxi_location_android.databinding.ItemListPlacemarksBinding
-import com.example.silvanadorantescode.taxi_location_android.databinding.ItemListPlacemarksBindingImpl
-import com.example.silvanadorantescode.taxi_location_android.presentation.ui.ListPlacemarksFragment
-import com.example.silvanadorantescode.taxi_location_android.presentation.ui.MapPlacemarkFragment
-import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel
-import com.google.android.material.tabs.TabLayout
+import com.example.silvanadorantescode.taxi_location_android.presentation.ui.ListPlacemarksFragmentDirections
 
 
 /**
@@ -26,6 +20,9 @@ import com.google.android.material.tabs.TabLayout
  */
 class PlacemarksAdapter : ListAdapter<PlacemarksListItem, PlacemarksAdapter.PlacemarksViewHolder>(PlacemarksDiffCallback()) {
 
+    companion object{
+        private val TAG = PlacemarksAdapter::class.java.simpleName
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlacemarksViewHolder {
 
@@ -50,15 +47,13 @@ class PlacemarksAdapter : ListAdapter<PlacemarksListItem, PlacemarksAdapter.Plac
 
                     }
                 }
-
-
-                }
             }
-
-        private fun navigateToPlacemarksMap(placemarksListItem:PlacemarksListItem, view: View){
-
         }
 
+        private fun navigateToPlacemarksMap(placemarksListItem:PlacemarksListItem, view: View){
+            val direction = ListPlacemarksFragmentDirections.actionToListplacemarksMapdetailFramgent(placemarksListItem)
+            view.findNavController().navigate(direction)
+        }
 
         fun bind(item: PlacemarksListItem){
               binding.apply {
@@ -68,7 +63,6 @@ class PlacemarksAdapter : ListAdapter<PlacemarksListItem, PlacemarksAdapter.Plac
                   executePendingBindings()
               }
         }
-
 
     }
 
@@ -82,7 +76,5 @@ class PlacemarksAdapter : ListAdapter<PlacemarksListItem, PlacemarksAdapter.Plac
         }
     }
 
-    companion object{
-        private val TAG = PlacemarksAdapter::class.java.simpleName
-    }
+
 }
