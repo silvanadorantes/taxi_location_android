@@ -1,46 +1,38 @@
 package com.example.silvanadorantescode.taxi_location_android.presentation.ui
 
 import android.Manifest
-import android.app.Activity
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
-import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Button
-import androidx.appcompat.app.AlertDialog
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.silvanadorantescode.taxi_location_android.R
-
 import com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem
+
 import com.example.silvanadorantescode.taxi_location_android.databinding.FragmentMapPlacemarkBinding
-import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.MapDetailPlacemarksViewModel
-import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.google.android.play.core.splitinstall.e
 import javax.inject.Inject
 
 
@@ -58,8 +50,7 @@ class MapPlacemarkFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerC
 
     lateinit var placemarksListItem: PlacemarksListItem
 
-    @Inject
-    lateinit var mapDetailPlacemarksViewModel: MapDetailPlacemarksViewModel
+
     lateinit var mFusedLocationClient: FusedLocationProviderClient
     var latLng: LatLng? = null
     var isGPS = false
@@ -111,7 +102,6 @@ class MapPlacemarkFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerC
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mapDetailPlacemarksViewModel = ViewModelProviders.of(this).get(MapDetailPlacemarksViewModel::class.java)
 
 
     }
@@ -127,7 +117,10 @@ class MapPlacemarkFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerC
 
 
 
-       mapDetailPlacemarksViewModel.placemark = args.placemarksItem!!
+
+        mapPlacemarkBinding.fab.setOnClickListener {
+            openPlacemarksGeo(args.placemarksItem!!)
+        }
 
 
 
@@ -165,7 +158,7 @@ class MapPlacemarkFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerC
 
 
 
-    fun  openPlacemarksGeo(){
+    fun  openPlacemarksGeo( placemarksListItem: PlacemarksListItem){
         dialog = Dialog(requireActivity())
         dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog!!.setContentView(R.layout.dialog_placemarks)
@@ -174,6 +167,34 @@ class MapPlacemarkFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerC
 
         val inflater = requireActivity().layoutInflater
         val v = inflater.inflate(R.layout.dialog_placemarks, null)
+
+        val tvName = v.findViewById<View>(R.id.tvName) as TextView
+        val tvAddress = v.findViewById<View>(R.id.tvAddress) as TextView
+        val longitude = v.findViewById<View>(R.id.longitud) as TextView
+        val latitud = v.findViewById<View>(R.id.latitud) as TextView
+        val tvengineType = v.findViewById<View>(R.id.tvengineType) as TextView
+        val tvFuel = v.findViewById<View>(R.id.tvfuel) as TextView
+        val tvExterior = v.findViewById<View>(R.id.tvexterior) as TextView
+        val tvInterior = v.findViewById<View>(R.id.tvinterior) as TextView
+        val tvVin = v.findViewById<View>(R.id.tvvin) as TextView
+
+        tvName.text = placemarksListItem.name
+        tvAddress.text = placemarksListItem.address
+        latitud.text = placemarksListItem.coordinates?.get(1).toString()
+        longitude.text = placemarksListItem.coordinates?.get(0).toString()
+        tvengineType.text = placemarksListItem.engineType
+        tvFuel.text = placemarksListItem.fuel.toString()
+        tvExterior.text = placemarksListItem.exterior
+        tvInterior.text = placemarksListItem.interior
+        tvVin.text = placemarksListItem.vin
+
+
+        dialog!!.setContentView(v)
+        dialog!!.show()
+
+
+
+
 
     }
 

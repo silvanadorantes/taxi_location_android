@@ -2,7 +2,6 @@ package com.example.silvanadorantescode.taxi_location_android.util.base
 
 import androidx.lifecycle.ViewModel
 import com.example.silvanadorantescode.taxi_location_android.app.App
-import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.MapDetailPlacemarksViewModel
 import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel
 
 /**
@@ -20,7 +19,7 @@ abstract class BaseViewModel: ViewModel() {
     private fun inject(){
         when (this) {
             is PlacemarksViewModel -> injector.inject(this)
-            is MapDetailPlacemarksViewModel -> injector.inject(this)
+
 
         }
     }

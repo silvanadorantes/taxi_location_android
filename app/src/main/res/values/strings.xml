@@ -29,6 +29,13 @@
     <string name="clientSecret" translatable="false">AIzaSyDIecYh_BcK4vwj-DY53NvHFIsbf3v_mRI</string>
     <!--Maps-->
     <string name="google_maps_key" translatable="false">AIzaSyDIecYh_BcK4vwj-DY53NvHFIsbf3v_mRI</string>
-    <string name="informationdetail">Placemarks information detail</string>
+    <string name="informationdetail">Placemarks information</string>
+    <string name="engineType">Engine</string>
+    <string name="fuel">Fuel</string>
+    <string name="exterior">Exterior</string>
+    <string name="interior">Interior</string>
+    <string name="vin">Vin</string>
+    <string name="address">address</string>
+    <string name="name">Name</string>
 
 </resources>

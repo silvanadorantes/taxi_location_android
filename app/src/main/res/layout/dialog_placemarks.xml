@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-        <variable
-            name="placemarks"
-            type="com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.MapDetailPlacemarksViewModel" />
-
-    </data>
 
     <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/dialog_placemarks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,6 +17,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/micro_padding"
+            android:padding="@dimen/micro_padding"
             android:clipToPadding="false">
 
 
@@ -32,14 +27,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textSize="@dimen/material_text_headline"
+                android:textSize="@dimen/material_text_title"
                 android:textColor="@color/colorPrimaryText"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/xlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginEnd="@dimen/normal_padding"
-                android:layout_marginRight="@dimen/normal_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -50,68 +45,68 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/informationdetail"
-                android:textSize="@dimen/material_text_title"
+                android:textSize="@dimen/material_text_subhead"
                 android:textColor="@color/colorPrimaryText"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/xlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginEnd="@dimen/normal_padding"
-                android:layout_marginRight="@dimen/normal_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvtitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
                 app:layout_constraintHorizontal_bias="0.0" />
 
 
+
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{placemarks.placemark.name}"
                 android:textSize="@dimen/material_text_subhead"
                 android:textColor="@color/colorPrimaryText"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/xlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginEnd="@dimen/normal_padding"
-                android:layout_marginRight="@dimen/normal_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
                 app:layout_constraintTop_toBottomOf="@id/information"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toEndOf="@id/guideline5"
                 app:layout_constraintHorizontal_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imgPlacemarks"
-                android:layout_width="@dimen/avatar_size"
-                android:layout_height="@dimen/avatar_size"
-                android:layout_marginEnd="@dimen/xxxlarge_padding"
-                android:layout_marginRight="@dimen/xxxlarge_padding"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
+                android:layout_width="@dimen/avatar_menu"
+                android:layout_height="@dimen/avatar_menu"
+                android:layout_marginEnd="@dimen/xlarge_padding"
+                android:layout_marginRight="@dimen/xlarge_padding"
+                android:layout_marginLeft="@dimen/xlarge_padding"
+                android:layout_marginStart="@dimen/xlarge_padding"
                 android:src="@drawable/ic_taxi_route_64"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
                 app:layout_constraintHorizontal_bias="0.4" />
+
+
 
             <TextView
                 android:id="@+id/tvAddress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{placemarks.placemark.address}"
                 android:textSize="@dimen/material_text_bodyM"
                 android:textColor="@color/colorPrimaryText"
                 android:maxLines="10"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
-                android:layout_marginRight="@dimen/normal_padding"
-                android:layout_marginEnd="@dimen/normal_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toEndOf="@+id/guideline5"
                 app:layout_constraintHorizontal_bias="0.0" />
 
             <TextView
@@ -121,11 +116,11 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/material_text_bodyM"
                 android:textColor="@color/colorPrimaryText"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvAddress"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toStartOf="@id/guideline5"
                 app:layout_constraintHorizontal_bias="0.0" />
 
 
@@ -135,13 +130,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/rounded_corner_category"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginEnd="@dimen/xxxlarge_padding"
-                android:layout_marginRight="@dimen/xxxlarge_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/normal_padding"
+                android:layout_marginRight="@dimen/normal_padding"
                 android:layout_marginTop="@dimen/small_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvCoordinates"
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toStartOf="@id/guideline5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0">
 
@@ -149,7 +144,6 @@
                     android:id="@+id/latitud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{placemarks.placemark.coordinates.get(1).toString()}"
                     android:textColor="@color/blue"
                     android:textStyle="bold"
                     android:gravity="start|center_vertical"
@@ -180,7 +174,6 @@
                     android:id="@+id/longitud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{placemarks.placemark.coordinates.get(0).toString()}"
                     android:textColor="@color/blue"
                     android:textStyle="bold"
                     android:gravity="end|center_vertical"
@@ -199,89 +192,110 @@
 
             </LinearLayout>
 
+
+
             <TextView
                 android:id="@+id/tvengineType"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{placemarks.placemark.engineType}"
                 android:textSize="@dimen/material_text_bodyM"
                 android:textColor="@color/colorPrimaryText"
                 android:maxLines="10"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
-                android:layout_marginRight="@dimen/normal_padding"
-                android:layout_marginEnd="@dimen/normal_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
                 app:layout_constraintTop_toBottomOf="@+id/contentLatLng"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toEndOf="@+id/guideline5"
                 app:layout_constraintHorizontal_bias="0.0" />
+
+            <TextView
+                android:id="@+id/fuel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
+                android:text="@string/fuel"
+                android:maxLines="10"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvengineType"
+                app:layout_constraintEnd_toStartOf="@id/tvfuel"
+                app:layout_constraintStart_toStartOf="@id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
 
             <TextView
                 android:id="@+id/tvfuel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{placemarks.placemark.fuel}"
                 android:textSize="@dimen/material_text_bodyM"
                 android:textColor="@color/colorPrimaryText"
                 android:maxLines="10"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
-                android:layout_marginRight="@dimen/normal_padding"
-                android:layout_marginEnd="@dimen/normal_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvengineType"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toEndOf="@id/fuel"
                 app:layout_constraintHorizontal_bias="0.0" />
+
+
 
             <TextView
                 android:id="@+id/tvexterior"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{placemarks.placemark.exterior}"
                 android:textSize="@dimen/material_text_bodyM"
                 android:textColor="@color/colorPrimaryText"
                 android:maxLines="10"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
-                android:layout_marginRight="@dimen/normal_padding"
-                android:layout_marginEnd="@dimen/normal_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvfuel"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toEndOf="@id/guideline5"
                 app:layout_constraintHorizontal_bias="0.0" />
+
 
             <TextView
                 android:id="@+id/tvinterior"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{placemarks.placemark.interior}"
                 android:textSize="@dimen/material_text_bodyM"
                 android:textColor="@color/colorPrimaryText"
                 android:maxLines="10"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
-                android:layout_marginRight="@dimen/normal_padding"
-                android:layout_marginEnd="@dimen/normal_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvexterior"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toEndOf="@+id/guideline5"
                 app:layout_constraintHorizontal_bias="0.0" />
+
+
+
 
             <TextView
                 android:id="@+id/tvvin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{placemarks.placemark.vin}"
                 android:textSize="@dimen/material_text_bodyM"
                 android:textColor="@color/colorPrimaryText"
                 android:maxLines="10"
-                android:layout_marginLeft="@dimen/xxxlarge_padding"
-                android:layout_marginStart="@dimen/xxxlarge_padding"
-                android:layout_marginRight="@dimen/normal_padding"
-                android:layout_marginEnd="@dimen/normal_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvinterior"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toEndOf="@id/guideline5"
                 app:layout_constraintHorizontal_bias="0.0" />
 
 
@@ -313,4 +327,3 @@
 
 
     </androidx.cardview.widget.CardView>
-</layout>

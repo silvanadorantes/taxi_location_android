@@ -18,7 +18,10 @@
             android:layout_height="wrap_content"
             />
 
-
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/taxi_location_toolbar">
 
             <fragment
                 android:id="@+id/map"
@@ -27,6 +30,21 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/taxi_location_toolbar"
                 />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_margin="@dimen/fab_margin"
+                app:srcCompat="@drawable/ic_map_marker_black_24dp"
+                />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
 
 
 
