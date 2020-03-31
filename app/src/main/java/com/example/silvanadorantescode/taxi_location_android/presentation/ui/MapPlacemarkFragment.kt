@@ -7,6 +7,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
@@ -15,17 +17,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.silvanadorantescode.taxi_location_android.R
 
 import com.example.silvanadorantescode.taxi_location_android.app.network.data.placemarks.PlacemarksListItem
 import com.example.silvanadorantescode.taxi_location_android.databinding.FragmentMapPlacemarkBinding
+import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.MapDetailPlacemarksViewModel
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.*
@@ -34,23 +40,34 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.android.play.core.splitinstall.e
+import javax.inject.Inject
 
 
 /**
  * Created by SilvanaDorantes on 20/03/20.
  */
 
-class MapPlacemarkFragment : Fragment(), GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-    com.google.android.gms.location.LocationListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
-    GoogleMap.OnMarkerDragListener, GoogleMap.OnInfoWindowClickListener, GoogleMap.OnMapLongClickListener{
+class MapPlacemarkFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
+    GoogleMap.OnMarkerDragListener,
+    GoogleMap.OnInfoWindowClickListener,
+    GoogleMap.OnIndoorStateChangeListener,
+    GoogleMap.OnMapLongClickListener{
 
     private val args: MapPlacemarkFragmentArgs by navArgs()
 
+    lateinit var placemarksListItem: PlacemarksListItem
+
+    @Inject
+    lateinit var mapDetailPlacemarksViewModel: MapDetailPlacemarksViewModel
     lateinit var mFusedLocationClient: FusedLocationProviderClient
     var latLng: LatLng? = null
     var isGPS = false
-    private var mMap: GoogleMap? = null
-    private var mMarker: Marker? = null
+    private lateinit var mMap: GoogleMap
+    private lateinit var mMarker: Marker
+
+    //private var mMap: GoogleMap? = null
+    //private var mMarker: Marker? = null
     internal var myMarker: Marker? = null
     internal var prevMarker: Marker? = null
     internal var iPoints: Marker? = null
@@ -94,6 +111,9 @@ class MapPlacemarkFragment : Fragment(), GoogleApiClient.ConnectionCallbacks, Go
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mapDetailPlacemarksViewModel = ViewModelProviders.of(this).get(MapDetailPlacemarksViewModel::class.java)
+
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -101,11 +121,15 @@ class MapPlacemarkFragment : Fragment(), GoogleApiClient.ConnectionCallbacks, Go
         val mapPlacemarkBinding = FragmentMapPlacemarkBinding.inflate(inflater, container, false)
         context ?: return mapPlacemarkBinding.root
 
+        mapPlacemarkBinding.taxiLocationToolbar.iconLeft.setOnClickListener {
+            findNavController().navigate(R.id.action_to_mapdetailplaceamrks_listplacemarks_fragment)
+        }
 
 
 
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+       mapDetailPlacemarksViewModel.placemark = args.placemarksItem!!
+
+
 
 
 
@@ -115,11 +139,41 @@ class MapPlacemarkFragment : Fragment(), GoogleApiClient.ConnectionCallbacks, Go
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d(TAG, "PlacemarksItem args")
+        Log.d(TAG, "name" + " " + args.placemarksItem?.name)
+        Log.d(TAG, "address" + " " + args.placemarksItem?.address)
+        Log.d(TAG, "lat" + " "+ args.placemarksItem?.coordinates?.get(1).toString())
+        Log.d(TAG, "lon" + " " + args.placemarksItem?.coordinates?.get(0).toString())
+        placemarksListItem = args.placemarksItem as PlacemarksListItem
+        Log.d(TAG, "PlacemarksItem")
+        Log.d(TAG, "name" + " " +placemarksListItem?.name)
+        Log.d(TAG, "address" + " " + placemarksListItem?.address)
+        Log.d(TAG, "lat" + " "+ placemarksListItem?.coordinates?.get(1).toString())
+        Log.d(TAG, "lon" + " " + placemarksListItem?.coordinates?.get(0).toString())
+
+
+
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
 
 
 
 
+    }
+
+
+
+    fun  openPlacemarksGeo(){
+        dialog = Dialog(requireActivity())
+        dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog!!.setContentView(R.layout.dialog_placemarks)
+        dialog!!.window!!.setWindowAnimations(R.style.Theme_AppCompat_Light_Dialog)
+        dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val inflater = requireActivity().layoutInflater
+        val v = inflater.inflate(R.layout.dialog_placemarks, null)
 
     }
 
@@ -133,17 +187,23 @@ class MapPlacemarkFragment : Fragment(), GoogleApiClient.ConnectionCallbacks, Go
 
     }
 
-    fun getLocation(p0: GoogleMap) {
-        Log.d(TAG, "PlacemarksItem args")
-        Log.d(TAG, "name" + " " + args.placemarksItem?.name)
-        Log.d(TAG, "address" + " " + args.placemarksItem?.address)
-        Log.d(TAG, "lat" + " "+ args.placemarksItem?.coordinates?.get(0).toString())
-        Log.d(TAG, "lon" + " " + args.placemarksItem?.coordinates?.get(1).toString())
-        if (args.placemarksItem?.coordinates?.get(0) != null && args.placemarksItem?.coordinates?.get(1) != null){
-            mMap = p0
+    fun getLocation(p0: GoogleMap?) {
+        Log.d(TAG, "MAPA PlacemarksItem MAPA")
+        Log.d(TAG, "name" + " " +placemarksListItem!!.name)
+        Log.d(TAG, "address" + " " + placemarksListItem!!.address)
+        Log.d(TAG, "lat" + " "+ placemarksListItem!!.coordinates!!.get(1).toString())
+        Log.d(TAG, "lon" + " " + placemarksListItem!!.coordinates!!.get(0).toString())
+
+        if (placemarksListItem.coordinates!!.get(0) != null && placemarksListItem.coordinates!!.get(1) != null){
+            mMap = p0!!
             val zoom: Float
-            val lat: Double = args.placemarksItem!!.coordinates!!.get(0)!!
-            val lon: Double = args.placemarksItem!!.coordinates!!.get(1)!!
+            val lat: Double = placemarksListItem.coordinates!!.get(1)!!
+            val lon: Double = placemarksListItem.coordinates!!.get(0)!!
+
+
+            Log.d(TAG, "MAPA")
+            Log.d(TAG, "latitud" + " "+ placemarksListItem!!.coordinates!!.get(1).toString())
+            Log.d(TAG, "longitud" + " " + placemarksListItem!!.coordinates!!.get(0).toString())
             val newLatLng = LatLng(lat, lon)
             setUpMap()
 
@@ -160,19 +220,23 @@ class MapPlacemarkFragment : Fragment(), GoogleApiClient.ConnectionCallbacks, Go
             mMap!!.focusedBuilding
 
 
-            mMarker = p0.addMarker(MarkerOptions().position(newLatLng).title(args.placemarksItem?.name).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_marker_black_36dp)).snippet(args.placemarksItem?.address).alpha(0.8f))
+            mMarker = p0.addMarker(MarkerOptions().position(newLatLng).title(placemarksListItem.name).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_marker_radius_black_36dp)).snippet(placemarksListItem.address).alpha(0.8f))
             zoom = 17.0f
 
             mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(newLatLng, zoom))
+
             mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lat, lon), zoom))
             mMap!!.animateCamera(CameraUpdateFactory.zoomIn())
 
             val cameraPosition: CameraPosition = CameraPosition.builder()
                 .target(newLatLng)
                 .zoom(17.0f)
-                .bearing(90f)
+                .bearing(0f)
                 .tilt(30f)
                 .build()
+
+            mMap!!.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+
 
             mMap!!.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
@@ -186,52 +250,48 @@ class MapPlacemarkFragment : Fragment(), GoogleApiClient.ConnectionCallbacks, Go
         }
     }
 
-
-
-
     override fun onMapReady(p0: GoogleMap?) {
         setUpMap()
-        getLocation(p0!!)
+        getLocation(p0)
+
+
     }
 
     override fun onMarkerClick(p0: Marker?): Boolean {
-        TODO("Not yet implemented")
+
+
+        return  false
+
+
     }
 
     override fun onMarkerDragEnd(p0: Marker?) {
-        TODO("Not yet implemented")
+
+
     }
 
     override fun onMarkerDragStart(p0: Marker?) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onMarkerDrag(p0: Marker?) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onInfoWindowClick(p0: Marker?) {
-        TODO("Not yet implemented")
+
+    }
+
+    override fun onIndoorBuildingFocused() {
+
+    }
+
+    override fun onIndoorLevelActivated(p0: IndoorBuilding?) {
+
     }
 
     override fun onMapLongClick(p0: LatLng?) {
-        TODO("Not yet implemented")
-    }
 
-    override fun onConnected(p0: Bundle?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onConnectionSuspended(p0: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onConnectionFailed(p0: ConnectionResult) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onLocationChanged(p0: Location?) {
-        TODO("Not yet implemented")
     }
 }
 

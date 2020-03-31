@@ -95,12 +95,11 @@ class ListPlacemarksFragment : Fragment(){
         })
 
         placemarksViewModel.getListPlacemarksErrorMessage().observe(viewLifecycleOwner, Observer {
-           Commons.makeToast(it, requireContext())
+            Snackbar.make(listPlacemarksBinding.root, it, Snackbar.LENGTH_LONG).show()
         })
 
         placemarksViewModel.getListPlacemarksErrorCode().observe(viewLifecycleOwner, Observer {
-           Commons.makeToast(it, requireContext())
-
+            Snackbar.make(listPlacemarksBinding.root, it, Snackbar.LENGTH_LONG).show()
         })
 
 

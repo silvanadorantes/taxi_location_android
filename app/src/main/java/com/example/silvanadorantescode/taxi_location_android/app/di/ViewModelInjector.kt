@@ -2,6 +2,7 @@ package com.example.silvanadorantescode.taxi_location_android.app.di
 
 
 import com.example.silvanadorantescode.taxi_location_android.app.network.di.RepositoryModule
+import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.MapDetailPlacemarksViewModel
 import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel
 import dagger.Component
 
@@ -15,6 +16,7 @@ import dagger.Component
 interface ViewModelInjector {
 
     fun inject(placemarksViewModel: PlacemarksViewModel)
+    fun inject(mapDetailPlacemarksViewModel: MapDetailPlacemarksViewModel)
 
 
     @Component.Builder

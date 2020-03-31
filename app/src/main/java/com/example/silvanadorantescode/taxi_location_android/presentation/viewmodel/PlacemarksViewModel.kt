@@ -15,7 +15,6 @@ import javax.inject.Inject
 class PlacemarksViewModel(): BaseViewModel() {
 
     private val TAG = PlacemarksViewModel::class.java.simpleName
-    private var recyclerPlacemarksAdapter:PlacemarksAdapter? = null
     var selected: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
     var placemark: MutableLiveData<PlacemarksListItem> = MutableLiveData<PlacemarksListItem>()
 
