@@ -20,6 +20,7 @@ abstract class BaseViewModel: ViewModel() {
         when (this) {
             is PlacemarksViewModel -> injector.inject(this)
 
+
         }
     }
 

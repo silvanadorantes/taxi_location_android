@@ -16,6 +16,7 @@ import com.example.silvanadorantescode.taxi_location_android.app.network.data.pl
 import com.example.silvanadorantescode.taxi_location_android.databinding.FragmentListPlacemarksBinding
 import com.example.silvanadorantescode.taxi_location_android.presentation.adapter.PlacemarksAdapter
 import com.example.silvanadorantescode.taxi_location_android.presentation.viewmodel.PlacemarksViewModel
+import com.example.silvanadorantescode.taxi_location_android.util.Commons
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_list_placemarks.*
 
@@ -56,8 +57,6 @@ class ListPlacemarksFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val listPlacemarksBinding = FragmentListPlacemarksBinding.inflate(inflater, container, false)
         context ?: return listPlacemarksBinding.root
-
-
 
         val adapter = PlacemarksAdapter()
         listPlacemarksBinding.rvListPlacemarks.adapter = adapter
