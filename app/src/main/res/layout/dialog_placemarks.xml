@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/dialog_placemarks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:cardElevation="@dimen/xlarge_padding"
+        app:cardCornerRadius="@dimen/xnormal_padding">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/micro_padding"
+            android:padding="@dimen/micro_padding"
+            android:clipToPadding="false">
+
+
+            <TextView
+                android:id="@+id/tvtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="@dimen/material_text_title"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/xlarge_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <TextView
+                android:id="@+id/information"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/informationdetail"
+                android:textSize="@dimen/material_text_subhead"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/xlarge_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_subhead"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/xlarge_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@id/information"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/imgPlacemarks"
+                android:layout_width="@dimen/avatar_menu"
+                android:layout_height="@dimen/avatar_menu"
+                android:layout_marginEnd="@dimen/xlarge_padding"
+                android:layout_marginRight="@dimen/xlarge_padding"
+                android:layout_marginLeft="@dimen/xlarge_padding"
+                android:layout_marginStart="@dimen/xlarge_padding"
+                android:src="@drawable/ic_taxi_route_64"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.4" />
+
+
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
+                android:maxLines="10"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvCoordinates"
+                android:text="@string/coordinates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+
+            <LinearLayout
+                android:id="@+id/contentLatLng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_corner_category"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/normal_padding"
+                android:layout_marginRight="@dimen/normal_padding"
+                android:layout_marginTop="@dimen/small_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvCoordinates"
+                app:layout_constraintStart_toStartOf="@id/guideline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0">
+
+                <TextView
+                    android:id="@+id/latitud"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/micro_padding"
+                    android:layout_marginLeft="@dimen/micro_padding"
+                    android:layout_marginEnd="@dimen/micro_padding"
+                    android:layout_marginRight="@dimen/micro_padding"
+                    android:layout_marginTop="@dimen/micro_padding"
+                    android:layout_marginBottom="@dimen/micro_padding"
+                    android:padding="@dimen/micro_padding"
+                    android:textSize="@dimen/material_text_bodyM"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCoordinates"
+                    app:layout_constraintStart_toStartOf="@+id/guideline5"
+                    app:layout_constraintEnd_toStartOf="@+id/longitud"
+                    app:layout_constraintHorizontal_bias="0.0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/material_text_small"
+                    android:text=","
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/xmicro_padding"
+                    android:layout_marginBottom="@dimen/xmicro_padding" />
+
+                <TextView
+                    android:id="@+id/longitud"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:gravity="end|center_vertical"
+                    android:layout_marginStart="@dimen/micro_padding"
+                    android:layout_marginLeft="@dimen/micro_padding"
+                    android:layout_marginEnd="@dimen/micro_padding"
+                    android:layout_marginRight="@dimen/micro_padding"
+                    android:layout_marginTop="@dimen/micro_padding"
+                    android:layout_marginBottom="@dimen/micro_padding"
+                    android:padding="@dimen/micro_padding"
+                    android:textSize="@dimen/material_text_bodyM"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCoordinates"
+                    app:layout_constraintStart_toEndOf="@+id/latitud"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0" />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/tvengineType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
+                android:maxLines="10"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@+id/contentLatLng"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <TextView
+                android:id="@+id/fuel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
+                android:text="@string/fuel"
+                android:maxLines="10"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvengineType"
+                app:layout_constraintEnd_toStartOf="@id/tvfuel"
+                app:layout_constraintStart_toStartOf="@id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+
+            <TextView
+                android:id="@+id/tvfuel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
+                android:maxLines="10"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvengineType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/fuel"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+
+
+            <TextView
+                android:id="@+id/tvexterior"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
+                android:maxLines="10"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvfuel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+
+            <TextView
+                android:id="@+id/tvinterior"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
+                android:maxLines="10"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvexterior"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+
+
+
+            <TextView
+                android:id="@+id/tvvin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/material_text_bodyM"
+                android:textColor="@color/colorPrimaryText"
+                android:maxLines="10"
+                android:layout_marginLeft="@dimen/micro_padding"
+                android:layout_marginStart="@dimen/micro_padding"
+                android:layout_marginRight="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/micro_padding"
+                app:layout_constraintTop_toBottomOf="@+id/tvinterior"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+
+
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/xnormal_padding" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/xextra_big_padding" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/xnormal_padding" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
